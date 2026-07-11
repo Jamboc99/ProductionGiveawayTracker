@@ -36,6 +36,8 @@
             btnAddRecord = new Button();
             dgvRecords = new DataGridView();
             lblTotalGiveaway = new Label();
+            btnSave = new Button();
+            btnLoad = new Button();
             ((System.ComponentModel.ISupportInitialize)nudLineNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudGiveawayKg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
@@ -104,11 +106,33 @@
             lblTotalGiveaway.TabIndex = 7;
             lblTotalGiveaway.Text = "Total Giveaway: 0Kg";
             // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(401, 48);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(75, 23);
+            btnSave.TabIndex = 8;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
+            // btnLoad
+            // 
+            btnLoad.Location = new Point(549, 48);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(75, 23);
+            btnLoad.TabIndex = 9;
+            btnLoad.Text = "Load";
+            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.Click += btnLoad_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLoad);
+            Controls.Add(btnSave);
             Controls.Add(lblTotalGiveaway);
             Controls.Add(dgvRecords);
             Controls.Add(btnAddRecord);
@@ -136,5 +160,7 @@
         private Button btnAddRecord;
         private DataGridView dgvRecords;
         private Label lblTotalGiveaway;
+        private Button btnSave;
+        private Button btnLoad;
     }
 }

@@ -1,8 +1,12 @@
+using System.Text.Json;
+using System.Text.Json;
+//             //
 namespace ProductionGiveawayTracker
 {
     public partial class Form1 : Form
     {
         private List<GiveawayRecord> records = new List<GiveawayRecord>();
+        private string saveFilePath = "giveaway_records.json";
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +24,7 @@ namespace ProductionGiveawayTracker
                 MessageBox.Show("please enter a product name");
                 return;
             }
-            if(nudLineNumber.Text == "")
+            if (nudLineNumber.Text == "")
             {
                 MessageBox.Show("please enter a line number");
                 return;
@@ -74,6 +78,46 @@ namespace ProductionGiveawayTracker
             nudLineNumber.Value = 0;
             cmbShift.SelectedIndex = 0;
             dtpDate.Value = DateTime.Today;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+            string json = JsonSerializer.Serialize(records);
+            File.WriteAllText(saveFilePath, json);
+            MessageBox.Show("Records saved successfully!");
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(saveFilePath))
+            {
+                MessageBox.Show("No saved records found.");
+                return;
+            }
+
+            string json = File.ReadAllText(saveFilePath);
+
+
+            List<GiveawayRecord>? loadedRecords = JsonSerializer.Deserialize<List<GiveawayRecord>>(json);
+
+            if (loadedRecords == null)
+            {
+                MessageBox.Show("could not load records");
+                return;
+            }
+
+            records = loadedRecords;
+
+            dgvRecords.DataSource = null;
+            dgvRecords.DataSource = records;
+
+            UpdateTotalGiveaway();
+
+            MessageBox.Show("Records loaded successfully");
         }
     }
 }
