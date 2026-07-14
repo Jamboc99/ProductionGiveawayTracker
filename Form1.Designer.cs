@@ -38,6 +38,9 @@
             lblTotalGiveaway = new Label();
             btnSave = new Button();
             btnLoad = new Button();
+            btnDeleteRecord = new Button();
+            btnEditRecord = new Button();
+            btnUpdateRecord = new Button();
             ((System.ComponentModel.ISupportInitialize)nudLineNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudGiveawayKg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
@@ -93,6 +96,7 @@
             // 
             dgvRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecords.Location = new Point(24, 237);
+            dgvRecords.MultiSelect = false;
             dgvRecords.Name = "dgvRecords";
             dgvRecords.Size = new Size(764, 173);
             dgvRecords.TabIndex = 6;
@@ -126,11 +130,44 @@
             btnLoad.UseVisualStyleBackColor = true;
             btnLoad.Click += btnLoad_Click;
             // 
+            // btnDeleteRecord
+            // 
+            btnDeleteRecord.Location = new Point(150, 208);
+            btnDeleteRecord.Name = "btnDeleteRecord";
+            btnDeleteRecord.Size = new Size(134, 23);
+            btnDeleteRecord.TabIndex = 10;
+            btnDeleteRecord.Text = "Delete Record";
+            btnDeleteRecord.UseVisualStyleBackColor = true;
+            btnDeleteRecord.Click += btnDeleteRecord_Click_1;
+            // 
+            // btnEditRecord
+            // 
+            btnEditRecord.Location = new Point(290, 208);
+            btnEditRecord.Name = "btnEditRecord";
+            btnEditRecord.Size = new Size(144, 23);
+            btnEditRecord.TabIndex = 11;
+            btnEditRecord.Text = "Edit Selected Record";
+            btnEditRecord.UseVisualStyleBackColor = true;
+            btnEditRecord.Click += btnEditRecord_Click;
+            // 
+            // btnUpdateRecord
+            // 
+            btnUpdateRecord.Location = new Point(440, 208);
+            btnUpdateRecord.Name = "btnUpdateRecord";
+            btnUpdateRecord.Size = new Size(119, 23);
+            btnUpdateRecord.TabIndex = 12;
+            btnUpdateRecord.Text = "Update Record";
+            btnUpdateRecord.UseVisualStyleBackColor = true;
+            btnUpdateRecord.Click += btnUpdateRecord_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnUpdateRecord);
+            Controls.Add(btnEditRecord);
+            Controls.Add(btnDeleteRecord);
             Controls.Add(btnLoad);
             Controls.Add(btnSave);
             Controls.Add(lblTotalGiveaway);
@@ -162,5 +199,8 @@
         private Label lblTotalGiveaway;
         private Button btnSave;
         private Button btnLoad;
+        private Button btnDeleteRecord;
+        private Button btnEditRecord;
+        private Button btnUpdateRecord;
     }
 }
